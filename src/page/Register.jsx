@@ -1,8 +1,6 @@
 import { Form, Link } from "react-router-dom";
 import styled from "styled-components";
-import Logo from "../components/Logo";
-import FormRow from "../components/FormRow";
-import SubmitBtn from "../components/SubmitBtn";
+import { FormRow, Logo, SubmitBtn } from "../components";
 
 export default function Register() {
   return (
