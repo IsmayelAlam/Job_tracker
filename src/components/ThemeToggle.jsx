@@ -3,14 +3,10 @@ import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 import { useDashboardContext } from "../page/DashboardLayout";
 
 export default function ThemeToggle() {
-  const { isDarkTheme, toggleDarkTheme } = useDashboardContext();
+  const { isDark, toggleDarkTheme } = useDashboardContext();
   return (
     <Wrapper onClick={toggleDarkTheme}>
-      {isDarkTheme ? (
-        <BsFillSunFill className="toggle-icon" />
-      ) : (
-        <BsFillMoonFill />
-      )}
+      {isDark ? <BsFillSunFill className="toggle-icon" /> : <BsFillMoonFill />}
     </Wrapper>
   );
 }
