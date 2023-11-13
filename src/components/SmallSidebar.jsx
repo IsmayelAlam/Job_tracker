@@ -1,7 +1,29 @@
+import { FaTimes } from "react-icons/fa";
 import styled from "styled-components";
+import { useDashboardContext } from "../page/DashboardLayout";
+import Logo from "./Logo";
+import NavLinks from "./NavLinks";
 
 export default function SmallSidebar() {
-  return <Wrapper>SmallSidebar</Wrapper>;
+  const { toggleSidebar, showSidebar } = useDashboardContext();
+
+  return (
+    <Wrapper>
+      <div className={`sidebar-container ${showSidebar && "show-sidebar"}`}>
+        <div className="content">
+          <button type="button" className="close-btn" onClick={toggleSidebar}>
+            <FaTimes />
+          </button>
+          <header>
+            <Logo />
+          </header>
+          <div className="nav-links">
+            <NavLinks />
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.aside`

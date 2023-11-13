@@ -5,6 +5,7 @@ import { useDashboardContext } from "../page/DashboardLayout";
 
 export default function Navbar() {
   const { toggleSidebar } = useDashboardContext();
+
   return (
     <Wrapper>
       <div className="nav-center">
