@@ -6,8 +6,15 @@ const jobSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true,
+      lowercase: true,
     },
-    position: String,
+    position: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
     status: {
       type: String,
       enum: ["interview", "declined", "pending"],
@@ -22,7 +29,10 @@ const jobSchema = new mongoose.Schema(
       default: "remote",
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    validateBeforeSave: true,
+  }
 );
 
 export default mongoose.model("jobs", jobSchema);

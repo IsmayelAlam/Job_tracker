@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import jobModel from "../model/jobModel.js";
+import { NotFoundError } from "../errors/customErrors.js";
 
 export const getAllJobs = async (req, res) => {
   const jobs = await jobModel.find();
@@ -8,6 +9,8 @@ export const getAllJobs = async (req, res) => {
 
 export const getJob = async (req, res) => {
   const job = await jobModel.findById(req.params.id);
+
+  if (!job) throw new NotFoundError(`no job found`);
 
   res.status(StatusCodes.OK).json({ job });
 };
@@ -19,7 +22,10 @@ export const createJob = async (req, res) => {
 
 export const updateJob = async (req, res) => {
   const { id } = req.params;
-  const job = await jobModel.findByIdAndUpdate(id, req.body);
+  const job = await jobModel.findByIdAndUpdate(id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
   res.status(StatusCodes.OK).json({ job });
 };

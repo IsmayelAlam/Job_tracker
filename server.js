@@ -4,26 +4,25 @@ import express from "express";
 import morgan from "morgan";
 import jobRouter from "./server/routes/jobRouter.js";
 import mongoose from "mongoose";
+import errorHandlerMiddleware from "./server/middleware/errorHandlerMiddleware.js";
 
 dotenv.config();
-const { env } = process;
+const { DATABASE, PORT, NodeENV } = process.env;
 
 const app = new express();
 app.use(express.json());
 
-if (env.NodeENV === "development") app.use(morgan("dev"));
+if (NodeENV === "development") app.use(morgan("dev"));
 
 app.use("/api/v1/job", jobRouter);
 
 app.use("*", (req, res) => res.status(404).json({ msg: "not found" }));
 
-app.use((err, req, res) =>
-  res.status(500).json({ msg: "something went wrong", err })
-);
+app.use(errorHandlerMiddleware);
 
 try {
-  await mongoose.connect(env.DATABASE);
-  app.listen(env.PORT, () => console.log("server running"));
+  await mongoose.connect(DATABASE);
+  app.listen(PORT, () => console.log("server running"));
 } catch (error) {
   console.log(error);
 }
