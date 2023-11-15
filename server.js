@@ -17,7 +17,7 @@ app.use("/api/v1/job", jobRouter);
 
 app.use("*", (req, res) => res.status(404).json({ msg: "not found" }));
 
-app.use((err, req, res, next) =>
+app.use((err, req, res) =>
   res.status(500).json({ msg: "something went wrong", err })
 );
 
