@@ -1,8 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 
 import userModels from "../model/userModels.js";
-import hashPassword from "../utils/password.js";
-import { NotFoundError } from "../errors/customErrors.js";
+import { comparePassword, hashPassword } from "../utils/password.js";
+import { NotFoundError, UnauthenticatedError } from "../errors/customErrors.js";
+import { createJWT } from "../utils/token.js";
 
 export const register = async (req, res) => {
   const isFirstAccount = (await userModels.countDocuments()) === 0;
@@ -17,11 +18,25 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) throw new NotFoundError(`invalid input`);
+  if (!email || !password) throw new NotFoundError(`invalid email or password`);
 
-  // const newUser = await userModels.create(req.body);
+  const user = await userModels.findOne({ email });
+  if (!user) throw new NotFoundError(`invalid credentials`);
 
-  res.status(StatusCodes.OK).json({ email, password });
+  const isValidUser = await comparePassword(password, user.password);
+  if (!isValidUser) throw new UnauthenticatedError("invalid credentials");
+
+  const token = createJWT({ userId: user._id });
+
+  const oneDay = 1000 * 60 * 60 * 24; // 01 day
+
+  res.cookie("token", token, {
+    httpOnly: true,
+    expires: new Date(Date.now() + oneDay),
+    // secure: process.env.NODE_ENV === "production",
+  });
+
+  res.status(StatusCodes.OK).json({ token });
 };
 
 export const logout = async (req, res) => {
