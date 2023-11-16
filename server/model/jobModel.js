@@ -29,7 +29,10 @@ const jobSchema = new mongoose.Schema(
       type: String,
       default: "remote",
     },
-    createdBy: { type: mongoose.Types.ObjectId, ref: "users" },
+    createdBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "users",
+    },
   },
   {
     timestamps: true,

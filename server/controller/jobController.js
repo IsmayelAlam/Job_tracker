@@ -3,12 +3,15 @@ import jobModel from "../model/jobModel.js";
 import { NotFoundError } from "../errors/customErrors.js";
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await jobModel.find();
+  const jobs = await jobModel.find({ createdBy: req.user.userId });
   res.status(StatusCodes.OK).json({ jobs });
 };
 
 export const getJob = async (req, res) => {
-  const job = await jobModel.findById(req.params.id);
+  const job = await jobModel.find({
+    _id: req.params.id,
+    createdBy: req.user.userId,
+  });
 
   if (!job) throw new NotFoundError(`no job found`);
 
@@ -16,6 +19,7 @@ export const getJob = async (req, res) => {
 };
 
 export const createJob = async (req, res) => {
+  req.body.createdBy = req.user.userId;
   const newJob = await jobModel.create(req.body);
   res.status(StatusCodes.CREATED).json({ newJob });
 };

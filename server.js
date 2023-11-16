@@ -5,8 +5,9 @@ import morgan from "morgan";
 import mongoose from "mongoose";
 
 import errorHandlerMiddleware from "./server/middleware/errorHandlerMiddleware.js";
-import jobRouter from "./server/routes/jobRouter.js";
 import authRouter from "./server/routes/authRouter.js";
+import jobRouter from "./server/routes/jobRouter.js";
+import userRouter from "./server/routes/userRouter.js";
 import { authenticateUser } from "./server/middleware/authMiddleware.js";
 import cookieParser from "cookie-parser";
 
@@ -22,6 +23,7 @@ if (NodeENV === "development") app.use(morgan("dev"));
 
 app.use("/api/v1/job", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", authenticateUser, userRouter);
 
 app.use("*", (req, res) => res.status(404).json({ msg: "not found" }));
 
