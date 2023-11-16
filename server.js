@@ -9,6 +9,7 @@ import jobRouter from "./server/routes/jobRouter.js";
 import authRouter from "./server/routes/authRouter.js";
 
 dotenv.config();
+// eslint-disable-next-line no-undef
 const { DATABASE, PORT, NodeENV } = process.env;
 
 const app = new express();
