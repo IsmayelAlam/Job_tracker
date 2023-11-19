@@ -9,10 +9,9 @@ export default function Register() {
         <Logo />
         <h4>Register</h4>
         <FormRow type="text" name="name" />
-        <FormRow type="text" name="lastName" labelText="last name" />
-        <FormRow type="text" name="location" />
         <FormRow type="email" name="email" />
         <FormRow type="password" name="password" />
+        <FormRow type="text" name="location" />
         <SubmitBtn />
         <p>
           Already a member?

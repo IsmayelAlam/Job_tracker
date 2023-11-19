@@ -29,9 +29,11 @@ app.use("*", (req, res) => res.status(404).json({ msg: "not found" }));
 
 app.use(errorHandlerMiddleware);
 
+const port = PORT || 3000;
+
 try {
   await mongoose.connect(DATABASE);
-  app.listen(PORT, () => console.log("server running"));
+  app.listen(port, () => console.log("server running"));
 } catch (error) {
   console.log(error);
 }
