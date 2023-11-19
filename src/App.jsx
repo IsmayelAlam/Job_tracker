@@ -7,7 +7,7 @@ import {
   Login,
   Register,
 } from "./page";
-import { registerAction } from "./action/register";
+import registerAction from "./action/register";
 
 const route = createBrowserRouter([
   {
