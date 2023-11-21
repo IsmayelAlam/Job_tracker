@@ -4,13 +4,13 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Please inout a valid name"],
       trim: true,
     },
     email: {
       type: String,
-      required: true,
       unique: true,
+      required: [true, "Please inout a valid email"],
       trim: true,
       lowercase: true,
       validate: {
@@ -22,8 +22,8 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: true,
-      min: 8,
+      required: [true, "Please inout a valid password"],
+      minLength: 8,
     },
     location: String,
     role: {

@@ -33,7 +33,7 @@ const port = PORT || 3000;
 
 try {
   await mongoose.connect(DATABASE);
-  app.listen(port, () => console.log("server running"));
+  app.listen(port, () => console.log("server running on port: " + port));
 } catch (error) {
   console.log(error);
 }

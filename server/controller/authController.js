@@ -20,7 +20,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) throw new NotFoundError(`invalid email or password`);
 
-  const user = await userModels.findOne({ email });
+  const user = await userModels.findOne({ email: email });
   if (!user) throw new NotFoundError(`invalid credentials`);
 
   const isValidUser = await comparePassword(password, user.password);
@@ -36,7 +36,7 @@ export const login = async (req, res) => {
     // secure: process.env.NODE_ENV === "production",
   });
 
-  res.status(StatusCodes.OK).json({ token });
+  res.status(StatusCodes.OK).json({ token, user });
 };
 
 export const logout = async (req, res) => {
