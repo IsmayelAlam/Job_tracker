@@ -13,7 +13,7 @@ import {
   Register,
   Stats,
 } from "./page";
-import { loginAction, registerAction } from "./action";
+import { addJobs, loginAction, registerAction } from "./action";
 import { dashboardLoader } from "./loader";
 
 const route = createBrowserRouter([
@@ -43,6 +43,7 @@ const route = createBrowserRouter([
           {
             index: true,
             element: <AddJob />,
+            action: addJobs,
           },
           {
             path: "stats",

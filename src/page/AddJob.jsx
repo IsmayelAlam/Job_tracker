@@ -1,6 +1,6 @@
 import { Form } from "react-router-dom";
-import { FormRow, FormRowSelect, SubmitBtn } from "../components";
 import styled from "styled-components";
+import { FormRow, FormRowSelect, SubmitBtn } from "../components";
 import { JOB_STATUS, JOB_TYPE } from "../utils/constance";
 
 export default function AddJob() {
