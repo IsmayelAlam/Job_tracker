@@ -1,4 +1,4 @@
-import { Outlet, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { createContext, useContext, useState } from "react";
 
@@ -12,15 +12,6 @@ const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("darkTheme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme);
   return isDarkTheme;
-};
-
-export const loader = async () => {
-  try {
-    const { data } = await customFetch("/user/current-user");
-    return data;
-  } catch (error) {
-    return redirect("/");
-  }
 };
 
 export default function DashboardLayout() {

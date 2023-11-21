@@ -14,7 +14,7 @@ import {
   Stats,
 } from "./page";
 import { loginAction, registerAction } from "./action";
-import { loader as dashboardLoader } from "./page/DashboardLayout";
+import { dashboardLoader } from "./loader";
 
 const route = createBrowserRouter([
   {

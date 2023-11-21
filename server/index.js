@@ -4,11 +4,11 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
 
-import errorHandlerMiddleware from "./server/middleware/errorHandlerMiddleware.js";
-import authRouter from "./server/routes/authRouter.js";
-import jobRouter from "./server/routes/jobRouter.js";
-import userRouter from "./server/routes/userRouter.js";
-import { authenticateUser } from "./server/middleware/authMiddleware.js";
+import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
+import authRouter from "./routes/authRouter.js";
+import jobRouter from "./routes/jobRouter.js";
+import userRouter from "./routes/userRouter.js";
+import { authenticateUser } from "./middleware/authMiddleware.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();

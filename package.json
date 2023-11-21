@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "vite --host",
-    "start:server": "nodemon server.js",
+    "start:server": "nodemon ./server",
     "start": "concurrently npm:start:*",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
