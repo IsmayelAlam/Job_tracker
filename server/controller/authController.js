@@ -40,7 +40,9 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  const newUser = await userModels.create(req.body);
-
-  res.status(StatusCodes.CREATED).json({ newUser });
+  res.cookie("token", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+  res.status(StatusCodes.OK).json({ msg: "user logged out!" });
 };
