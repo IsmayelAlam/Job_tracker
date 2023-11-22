@@ -2,14 +2,14 @@ import { toast } from "react-toastify";
 import customFetch from "../utils/customFetch";
 import { redirect } from "react-router-dom";
 
-export default async function addJobs({ request }) {
+export default async function addJobs({ request, params }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
   try {
-    await customFetch.post(`/job/${1}`, data);
-    toast.success("New job created!");
-    return redirect("/dashboard");
+    await customFetch.patch(`/job/${params.id}`, data);
+    toast.success("Job edit successfully!");
+    return redirect("/dashboard/all-jobs");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
