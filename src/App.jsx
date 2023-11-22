@@ -14,7 +14,7 @@ import {
   Stats,
 } from "./page";
 import { addJobs, loginAction, registerAction } from "./action";
-import { dashboardLoader } from "./loader";
+import { allJobsLoader, dashboardLoader } from "./loader";
 
 const route = createBrowserRouter([
   {
@@ -46,13 +46,15 @@ const route = createBrowserRouter([
             action: addJobs,
           },
           {
+            path: "all-jobs",
+            element: <AllJobs />,
+            loader: allJobsLoader,
+          },
+          {
             path: "stats",
             element: <Stats />,
           },
-          {
-            path: "all-jobs",
-            element: <AllJobs />,
-          },
+
           {
             path: "profile",
             element: <Profile />,
