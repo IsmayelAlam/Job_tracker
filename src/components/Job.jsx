@@ -1,14 +1,15 @@
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
-import { Link, Form } from "react-router-dom";
-import JobInfo from "./JobInfo";
-import day from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import day from "dayjs";
+import { Link, Form } from "react-router-dom";
 import styled from "styled-components";
+import JobInfo from "./JobInfo";
 
 day.extend(advancedFormat);
 
 const Job = ({ _id, position, company, location, type, createdAt, status }) => {
   const date = day(createdAt).format("MMM Do, YYYY");
+
   return (
     <Wrapper>
       <header>
