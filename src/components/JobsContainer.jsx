@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useAllJobsContext } from "../page/AllJobs";
+import Job from "./Job";
 
 export default function JobsContainer() {
   const { jobs } = useAllJobsContext();
@@ -8,7 +9,7 @@ export default function JobsContainer() {
       <h5>job{jobs.length > 1 && "s"} found</h5>
       <div className="jobs">
         {jobs.map((job) => (
-          <h3 key={job._id}>{job.company}</h3>
+          <Job key={job._id} {...job} />
         ))}
       </div>
     </Wrapper>
