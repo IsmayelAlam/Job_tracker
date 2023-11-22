@@ -6,6 +6,7 @@ const AllJobsContext = createContext();
 
 export default function AllJobs() {
   const data = useLoaderData();
+
   return (
     <AllJobsContext.Provider value={data}>
       <SearchContainer />

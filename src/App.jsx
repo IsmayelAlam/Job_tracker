@@ -13,8 +13,13 @@ import {
   Register,
   Stats,
 } from "./page";
-import { addJobs, loginAction, registerAction } from "./action";
-import { allJobsLoader, dashboardLoader } from "./loader";
+import {
+  addJobsAction,
+  editJobAction,
+  loginAction,
+  registerAction,
+} from "./action";
+import { allJobsLoader, dashboardLoader, editJobLoader } from "./loader";
 
 const route = createBrowserRouter([
   {
@@ -43,7 +48,7 @@ const route = createBrowserRouter([
           {
             index: true,
             element: <AddJob />,
-            action: addJobs,
+            action: addJobsAction,
           },
           {
             path: "all-jobs",
@@ -66,6 +71,8 @@ const route = createBrowserRouter([
           {
             path: "edit-job/:id",
             element: <EditJob />,
+            loader: editJobLoader,
+            action: editJobAction,
           },
           { path: "delete-job/:id" },
         ],

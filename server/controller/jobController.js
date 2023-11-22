@@ -8,7 +8,7 @@ export const getAllJobs = async (req, res) => {
 };
 
 export const getJob = async (req, res) => {
-  const job = await jobModel.find({
+  const job = await jobModel.findOne({
     _id: req.params.id,
     createdBy: req.user.userId,
   });

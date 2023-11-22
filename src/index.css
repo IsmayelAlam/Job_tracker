@@ -321,6 +321,11 @@ button:disabled {
   color: #f59e0b;
 }
 
+.offered {
+  background: #8bd689;
+  color: #0d410d;
+}
+
 .interview {
   background: #e0e8f9;
   color: #647acb;
