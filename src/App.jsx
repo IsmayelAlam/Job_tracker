@@ -15,6 +15,7 @@ import {
 } from "./page";
 import {
   addJobsAction,
+  deleteJobAction,
   editJobAction,
   loginAction,
   registerAction,
@@ -74,7 +75,7 @@ const route = createBrowserRouter([
             loader: editJobLoader,
             action: editJobAction,
           },
-          { path: "delete-job/:id" },
+          { path: "delete-job/:id", action: deleteJobAction },
         ],
       },
     ],
