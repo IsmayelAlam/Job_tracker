@@ -20,7 +20,12 @@ import {
   loginAction,
   registerAction,
 } from "./action";
-import { allJobsLoader, dashboardLoader, editJobLoader } from "./loader";
+import {
+  allJobsLoader,
+  dashboardLoader,
+  editJobLoader,
+  statsLoader,
+} from "./loader";
 
 const route = createBrowserRouter([
   {
@@ -59,6 +64,7 @@ const route = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
+            loader: statsLoader,
           },
 
           {
