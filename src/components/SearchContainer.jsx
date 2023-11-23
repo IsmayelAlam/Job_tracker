@@ -1,7 +1,7 @@
 import { Form, Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { FormRow, FormRowSelect } from ".";
+import { FormRow, FormRowSelect, SubmitBtn } from ".";
 import {
   JOB_SORT_BY,
   JOB_STATUS,
@@ -13,9 +13,9 @@ export default function SearchContainer() {
     <Wrapper>
       <Form className="form">
         <h5 className="form-title">search form</h5>
+
         <div className="form-center">
           <FormRow type="search" name="search" />
-
           <FormRowSelect
             labelText="job status"
             name="status"
@@ -27,6 +27,7 @@ export default function SearchContainer() {
             list={["all", ...Object.values(JOB_TYPE)]}
           />
           <FormRowSelect name="sort" list={[...Object.values(JOB_SORT_BY)]} />
+          <SubmitBtn formBtn />
           <Link to="/dashboard/all-jobs" className="btn form-btn delete-btn">
             Reset Search Values
           </Link>

@@ -3,10 +3,12 @@ import { useAllJobsContext } from "../page/AllJobs";
 import Job from "./Job";
 
 export default function JobsContainer() {
-  const { jobs } = useAllJobsContext();
+  const { totalJobs, page, numOfPages, jobs } = useAllJobsContext();
   return (
     <Wrapper>
-      <h5>job{jobs.length > 1 && "s"} found</h5>
+      <h5>
+        {totalJobs} job{jobs.length > 1 && "s"} found
+      </h5>
       <div className="jobs">
         {jobs.map((job) => (
           <Job key={job._id} {...job} />
