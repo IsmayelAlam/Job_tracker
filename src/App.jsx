@@ -1,7 +1,6 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
   AddJob,
-  Admin,
   AllJobs,
   DashboardLayout,
   EditJob,
@@ -17,6 +16,7 @@ import {
   addJobsAction,
   deleteJobAction,
   editJobAction,
+  editProfileAction,
   loginAction,
   registerAction,
 } from "./action";
@@ -64,10 +64,7 @@ const route = createBrowserRouter([
           {
             path: "profile",
             element: <Profile />,
-          },
-          {
-            path: "admin",
-            element: <Admin />,
+            action: editProfileAction,
           },
           {
             path: "edit-job/:id",

@@ -12,9 +12,8 @@ export const getCurrentUser = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-  const { id } = req.params;
-  const User = await userModels.findByIdAndUpdate(id, req.body, {
-    new: true,
+  const { userId } = req.user;
+  const User = await userModels.findByIdAndUpdate(userId, req.body, {
     runValidators: true,
   });
 
