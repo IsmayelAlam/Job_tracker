@@ -5,8 +5,22 @@ import mongoose from "mongoose";
 import dayjs from "dayjs";
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await jobModel.find({ createdBy: req.user.userId });
-  res.status(StatusCodes.OK).json({ jobs });
+  const { search, status, type } = req.query;
+
+  const queryObj = {
+    createdBy: req.user.userId,
+  };
+
+  if (search)
+    queryObj.$or = [
+      { position: { $regex: search, $options: "i" } },
+      { company: { $regex: search, $options: "i" } },
+    ];
+  if (status && status !== "all") queryObj.status = status;
+  if (type && type !== "all") queryObj.type = type;
+
+  const jobs = await jobModel.find(queryObj);
+  res.status(StatusCodes.OK).json({ jobs, size: jobs.length });
 };
 
 export const getJob = async (req, res) => {

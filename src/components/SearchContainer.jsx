@@ -18,12 +18,12 @@ export default function SearchContainer() {
 
           <FormRowSelect
             labelText="job status"
-            name="jobStatus"
+            name="status"
             list={["all", ...Object.values(JOB_STATUS)]}
           />
           <FormRowSelect
             labelText="job type"
-            name="jobType"
+            name="type"
             list={["all", ...Object.values(JOB_TYPE)]}
           />
           <FormRowSelect name="sort" list={[...Object.values(JOB_SORT_BY)]} />
