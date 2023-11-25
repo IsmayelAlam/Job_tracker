@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { useAllJobsContext } from "../page/AllJobs";
 import Job from "./Job";
+import PageBtnContainer from "./PageBtnContainer";
 
 export default function JobsContainer() {
-  const { totalJobs, page, numOfPages, jobs } = useAllJobsContext();
+  const { totalJobs, jobs, numOfPages } = useAllJobsContext();
   return (
     <Wrapper>
       <h5>
@@ -14,6 +15,7 @@ export default function JobsContainer() {
           <Job key={job._id} {...job} />
         ))}
       </div>
+      {numOfPages && <PageBtnContainer />}
     </Wrapper>
   );
 }
