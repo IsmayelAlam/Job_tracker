@@ -4,13 +4,15 @@ import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import path from "path";
+import cookieParser from "cookie-parser";
+import helmet from "helmet";
+import ExpressMongoSanitize from "express-mongo-sanitize";
 
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import authRouter from "./routes/authRouter.js";
 import jobRouter from "./routes/jobRouter.js";
 import userRouter from "./routes/userRouter.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
-import cookieParser from "cookie-parser";
 
 dotenv.config();
 // eslint-disable-next-line no-undef
@@ -21,6 +23,8 @@ const app = new express();
 app.use(express.static(path.resolve(__dirname, "./client")));
 app.use(express.json());
 app.use(cookieParser());
+app.use(helmet());
+app.use(ExpressMongoSanitize());
 
 if (NodeENV === "development") app.use(morgan("dev"));
 

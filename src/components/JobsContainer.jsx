@@ -15,7 +15,7 @@ export default function JobsContainer() {
           <Job key={job._id} {...job} />
         ))}
       </div>
-      {numOfPages && <PageBtnContainer />}
+      {numOfPages < 1 && <PageBtnContainer />}
     </Wrapper>
   );
 }
