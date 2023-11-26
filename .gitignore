@@ -26,3 +26,4 @@ dist-ssr
 
 extras
 *.env*
+client
