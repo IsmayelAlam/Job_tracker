@@ -2,11 +2,8 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://job-tracker-7x2b.onrender.com/api"
+      "destination": "https://job-tracker-7x2b.onrender.com/"
     },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
+    { "key": "Access-Control-Allow-Credentials", "value": "true" }
   ]
 }
