@@ -1,24 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import main from "/main.svg";
-import Logo from "../components/Logo";
 
 export default function Landing() {
   return (
     <Section>
-      <nav>
-        <Logo />
-      </nav>
       <div className="container page">
         <div className="info">
           <h1>
             job <span>tracking</span> app
           </h1>
           <p>
-            I&apos;m baby wayfarers hoodie next level taiyaki brooklyn cliche
-            blue bottle single-origin coffee chia. Aesthetic post-ironic venmo,
-            quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
-            narwhal.
+            A monolithic architecture website designed for efficiently tracking
+            the progress of any job hunt, simplifying the process by many
+            providing robust features.
           </p>
           <Link to="/register" className="btn register-link">
             Register
@@ -34,16 +29,8 @@ export default function Landing() {
 }
 
 const Section = styled.section`
-  nav {
-    width: var(--fluid-width);
-    max-width: var(--max-width);
-    margin: 0 auto;
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
-  }
   .page {
-    min-height: calc(100vh - var(--nav-height));
+    min-height: 100vh;
     display: grid;
     align-items: center;
     margin-top: -3rem;

@@ -53,13 +53,13 @@ const route = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AddJob />,
-            action: addJobsAction,
-          },
-          {
-            path: "all-jobs",
             element: <AllJobs />,
             loader: allJobsLoader,
+          },
+          {
+            path: "add-jobs",
+            element: <AddJob />,
+            action: addJobsAction,
           },
           {
             path: "stats",

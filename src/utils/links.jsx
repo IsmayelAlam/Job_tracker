@@ -5,14 +5,14 @@ import { ImProfile } from "react-icons/im";
 
 const links = [
   {
-    text: "add job",
+    text: "all jobs",
     path: ".",
-    icon: <FaWpforms />,
+    icon: <MdQueryStats />,
   },
   {
-    text: "all jobs",
-    path: "all-jobs",
-    icon: <MdQueryStats />,
+    text: "add job",
+    path: "add-jobs",
+    icon: <FaWpforms />,
   },
   {
     text: "stats",
