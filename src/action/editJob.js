@@ -9,7 +9,7 @@ export default async function addJobs({ request, params }) {
   try {
     await customFetch.patch(`/job/${params.id}`, data);
     toast.success("Job edit successfully!");
-    return redirect("/dashboard/all-jobs");
+    return redirect("/dashboard/");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;

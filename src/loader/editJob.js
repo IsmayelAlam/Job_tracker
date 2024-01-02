@@ -8,6 +8,6 @@ export default async function loader({ params }) {
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.msg);
-    return redirect("/dashboard/all-jobs");
+    return redirect("/dashboard");
   }
 }

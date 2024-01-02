@@ -28,7 +28,7 @@ export default function SearchContainer() {
           />
           <FormRowSelect name="sort" list={[...Object.values(JOB_SORT_BY)]} />
           <SubmitBtn formBtn />
-          <Link to="/dashboard/all-jobs" className="btn form-btn delete-btn">
+          <Link to="/dashboard" className="btn form-btn delete-btn">
             Reset Search Values
           </Link>
         </div>
