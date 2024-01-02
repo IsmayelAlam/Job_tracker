@@ -12,6 +12,7 @@ export default function AddJob() {
           <FormRow type="text" name="company" />
           <FormRow type="text" name="position" />
           <FormRow type="text" labelText="location" name="location" />
+          <FormRow type="url" labelText="job post link" name="link" />
           <FormRowSelect name="status" list={Object.values(JOB_STATUS)} />
           <FormRowSelect name="type" list={Object.values(JOB_TYPE)} />
           <SubmitBtn formBtn={"form-btn"} />

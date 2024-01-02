@@ -7,7 +7,16 @@ import JobInfo from "./JobInfo";
 
 day.extend(advancedFormat);
 
-const Job = ({ _id, position, company, location, type, createdAt, status }) => {
+const Job = ({
+  _id,
+  position,
+  company,
+  location,
+  type,
+  createdAt,
+  status,
+  link,
+}) => {
   const date = day(createdAt).format("MMM Do, YYYY");
 
   return (
@@ -27,6 +36,9 @@ const Job = ({ _id, position, company, location, type, createdAt, status }) => {
           <div className={`status ${status}`}>{status}</div>
         </div>
         <footer className="actions">
+          <Link to={link} className="btn edit-btn">
+            Link
+          </Link>
           <Link to={`../edit-job/${_id}`} className="btn edit-btn">
             Edit
           </Link>

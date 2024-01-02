@@ -21,6 +21,12 @@ const jobSchema = new mongoose.Schema(
       enum: Object.values(JOB_STATUS),
       default: "pending",
     },
+    link: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+    },
     type: {
       type: String,
       enum: Object.values(JOB_TYPE),
